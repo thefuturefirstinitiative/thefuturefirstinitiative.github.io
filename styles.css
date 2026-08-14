@@ -297,6 +297,26 @@ body {
     margin-top: 2rem;
 }
 
+.stat-counter {
+    background: linear-gradient(135deg, var(--secondary-color), var(--tertiary-color));
+    color: var(--white);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    text-align: center;
+}
+
+.counter-number {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.counter-label {
+    font-size: 1rem;
+    margin: 0;
+    opacity: 0.95;
+}
+
 .stat {
     background: linear-gradient(135deg, var(--secondary-color), var(--tertiary-color));
     color: var(--white);

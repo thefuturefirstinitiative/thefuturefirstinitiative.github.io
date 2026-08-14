@@ -48,3 +48,33 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
     });
 });
+
+// Animated Counter Function
+function animateCounters() {
+    const counters = document.querySelectorAll('.counter-number');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
+                const target = parseInt(entry.target.getAttribute('data-target'));
+                let current = 0;
+                const increment = Math.ceil(target / 60); // 60 steps for smooth animation
+                
+                const interval = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        entry.target.textContent = target.toLocaleString() + '+';
+                        entry.target.classList.add('counted');
+                        clearInterval(interval);
+                    } else {
+                        entry.target.textContent = current.toLocaleString();
+                    }
+                }, 20);
+            }
+        });
+    }, { threshold: 0.5 });
+    
+    counters.forEach(counter => observer.observe(counter));
+}
+
+document.addEventListener('DOMContentLoaded', animateCounters);
